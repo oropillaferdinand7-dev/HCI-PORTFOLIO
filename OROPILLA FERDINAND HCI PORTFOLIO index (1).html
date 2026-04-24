@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ferdinand Oropilla | Portfolio</title>
+
+<style>
+:root {
+    --bg: #0f172a;
+    --card: #111827;
+    --text: #e5e7eb;
+    --accent: #22c55e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* NAV */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 15px 10%;
+    background: rgba(15,23,42,0.8);
+    backdrop-filter: blur(10px);
+}
+
+nav a {
+    margin-right: 20px;
+    color: var(--text);
+    text-decoration: none;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10%;
+}
+
+.hero h1 {
+    font-size: 42px;
+}
+
+.hero span {
+    color: var(--accent);
+}
+
+.hero p {
+    margin-top: 10px;
+    opacity: 0.7;
+}
+
+/* SECTIONS */
+section {
+    padding: 80px 10%;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.6s;
+}
+
+section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* CARD */
+.card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    border: 1px solid #1f2937;
+    transition: 0.3s;
+}
+
+.card:hover {
+    border-color: var(--accent);
+}
+
+/* SKILLS */
+.skill {
+    margin: 15px 0;
+}
+
+.bar {
+    height: 6px;
+    background: #1f2937;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.bar div {
+    height: 100%;
+    background: var(--accent);
+    width: 0;
+    transition: 1.5s;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    opacity: 0.6;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<div class="hero">
+    <h1>Hi, I'm <span>Ferdinand</span></h1>
+    <p>BSIT Student • Creative Editor • HCI</p>
+</div>
+
+<section id="about">
+    <h2>About</h2>
+    <div class="card">
+        <p>
+            I'm Oropilla Ferdinand G., 19 years old from Rosario, La Union.
+            Studying at University of Eastern Pangasinan. I focus on editing,
+            UI design, and user experience.
+        </p>
+    </div>
+</section>
+
+<section id="projects">
+    <h2>Projects</h2>
+    <div class="card">
+        <ul>
+            <li>Photo Editing Project</li>
+            <li>Video Editing Project</li>
+            <li>HCI Interface Design</li>
+        </ul>
+    </div>
+</section>
+
+<section id="skills">
+    <h2>Skills</h2>
+    <div class="card">
+
+        <div class="skill">
+            Photo Editing
+            <div class="bar"><div data-width="90%"></div></div>
+        </div>
+
+        <div class="skill">
+            Video Editing
+            <div class="bar"><div data-width="85%"></div></div>
+        </div>
+
+        <div class="skill">
+            UI Design
+            <div class="bar"><div data-width="70%"></div></div>
+        </div>
+
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact</h2>
+    <div class="card">
+        <p>Email: oropillaferdinand7@gmail.com</p>
+        <p>Phone: 0954 974 7075</p>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Ferdinand Oropilla</p>
+</footer>
+
+<script>
+const sections = document.querySelectorAll("section");
+const bars = document.querySelectorAll(".bar div");
+
+window.addEventListener("scroll", () => {
+
+    sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if(top < window.innerHeight - 50){
+            sec.classList.add("show");
+        }
+    });
+
+    bars.forEach(bar => {
+        const top = bar.getBoundingClientRect().top;
+        if(top < window.innerHeight){
+            bar.style.width = bar.getAttribute("data-width");
+        }
+    });
+
+});
+</script>
+
+</body>
+</html>
